@@ -1,4 +1,4 @@
-# PruebaTecnicaZiurApp manual de intalacion:
+# PruebaTecnicaZiurApp manual de instalacion:
 
 1. clonar el repositorio:
 git clone < https://github.com/YONNER44/PruebaTecnicaZiurApp.git >.
