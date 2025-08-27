@@ -1,0 +1,46 @@
+@page "/documentos"
+@inject ZiurApp.Services.DocumentosService DocumentosService
+
+<PageTitle>📑 Documentos - Ziur App</PageTitle>
+
+<h3>📑 Lista de Documentos</h3>
+
+@if (documentos == null)
+{
+    <p>Cargando...</p>
+}
+else if (!documentos.Any())
+{
+    <p>No se encontraron datos.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Activo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var doc in documentos)
+            {
+                <tr>
+                    <td>@doc.Codigo</td>
+                    <td>@doc.Descripcion</td>
+                    <td>@(doc.VActiva ? "✅" : "❌")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<ZiurApp.Services.Documento>? documentos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        documentos = await DocumentosService.GetDocumentosAsync();
+    }
+}
